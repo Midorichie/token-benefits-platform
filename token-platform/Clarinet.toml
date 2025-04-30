@@ -1,0 +1,20 @@
+[project]
+name = "token-benefits-platform"
+version = "0.1.0"
+
+[networks]
+localhost = { url = "http://127.0.0.1:20443" }
+test = { url = "https://stacks-blockchain-api.testnet.stacks.co" }
+
+[compiler]
+package = "~0.1.0"
+
+[paths]
+contracts = "contracts"
+tests = "tests"
+scripts = "scripts"
+
+# Add your contract definition here
+[contracts.token-benefits]
+path = "contracts/token-benefits.clar"
+depends_on = []
