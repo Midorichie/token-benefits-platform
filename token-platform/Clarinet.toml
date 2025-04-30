@@ -1,20 +1,31 @@
 [project]
 name = "token-benefits-platform"
-version = "0.1.0"
-
+version = "0.2.0"
+authors = []
+description = "Employee benefits token platform with rewards system"
+telemetry = false
+ 
 [networks]
 localhost = { url = "http://127.0.0.1:20443" }
-test = { url = "https://stacks-blockchain-api.testnet.stacks.co" }
-
-[compiler]
-package = "~0.1.0"
-
-[paths]
-contracts = "contracts"
-tests = "tests"
-scripts = "scripts"
-
-# Add your contract definition here
-[contracts.token-benefits]
-path = "contracts/token-benefits.clar"
+testnet = { url = "https://stacks-blockchain-api.testnet.stacks.co" }
+ 
+[contracts.benefits-token]
+path = "contracts/benefits-token.clar"
 depends_on = []
+ 
+[contracts.benefit-rewards]
+path = "contracts/benefit-rewards.clar"
+depends_on = ["benefits-token"]
+ 
+[repl]
+costs_version = 2
+parser_version = 2
+ 
+[repl.analysis]
+passes = ["check_checker"]
+ 
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
